@@ -99,6 +99,7 @@ public class Read4RomaDBServiceImpl implements ReaderService {
 
                 String querySqlFull = querySQL;
 
+                //判断是否为初次读取该表
                 if(isFirstRunFlag && (Objects.isNull(lastModifiedDate) || lastModifiedDate.equals(""))){
                     querySqlFull =  querySqlFull + (isHistoryTable ? Constant.queryFilter_ : Constant.queryFilter) + "1900-01-01T00%3A00%3A00.000%2B0000";
                 }else if(isFirstRunFlag && Objects.nonNull(lastModifiedDate)){
@@ -119,6 +120,7 @@ public class Read4RomaDBServiceImpl implements ReaderService {
 
                 log.info("querySqlFull:{}",querySqlFull);
 
+                //读取源数据
                 String response_string = "";
                 if(Objects.nonNull(done) && !done){
 
