@@ -1,0 +1,12 @@
+server:
+  port: 8082
+  servlet:
+    context-path: /xxx
+
+logging:
+  level:
+    root: info
+    cn.com.daikin: info
+  pattern:
+    console: "%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n"
+  config: classpath:logback-spring.xml
