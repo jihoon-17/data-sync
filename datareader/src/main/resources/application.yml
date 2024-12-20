@@ -1,0 +1,44 @@
+server:
+  port: 8081
+  servlet:
+    context-path: /xxx
+
+spring:
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://xxx.xxx.xx.xx:9030/datasync4mac?serverTimezone=GMT%2B8&useUnicode=true&useSSL=false&characterEncoding=utf8
+    password: xxxx
+    username: root
+    druid:
+      initial-size: 10
+      min-idle: 10
+      max-active: 20
+      max-wait: 60000
+      time-between-eviction-runs-millis: 60000
+      min-evictable-idle-time-millis: 180000
+      test-on-borrow: true
+      test-on-return: true
+      test-while-idle: true
+      pool-prepared-statements: true
+      max-pool-prepared-statement-per-connection-size: 50
+      remove-abandoned: true
+      remove-abandoned-timeout: 1800
+      remove-abandoned-timeout-millis: 180000
+      log-abandoned: true
+      filters: stat
+      validation-query: SELECT 1
+      db-type: com.alibaba.druid.pool.DruidDataSource
+
+mybatis:
+  mapper-locations: classpath:mapper/*.xml
+  configuration:
+    map-underscore-to-camel-case: true
+
+logging:
+  level:
+    root: info
+    cn.com.daikin: info
+  pattern:
+    console: "%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n"
+  config: classpath:logback-spring.xml

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.com.xx.reader.mapper.DataSyncRecordsMapper">
+
+    <select id="findOneBySchemaAndTable" parameterType="java.lang.String" resultType="cn.com.xx.reader.entity.DataSyncRecords">
+
+        select id,targetschema,tablename,lastmodifieddate,createtime from data_sync_records
+        where targetschema = #{targetschema} and tablename = #{tablename} order by lastmodifieddate desc limit 1
+    </select>
+
+    <select id="findQuerySqlBySchemaAndTable" parameterType="java.lang.String" resultType="java.lang.String">
+
+        select querysql from mac_table_config
+        where targetschema = #{targetschema} and tablename = #{tablename}
+    </select>
+
+    <insert id="insertRecord" parameterType="cn.com.xx.reader.entity.DataSyncRecords">
+
+        insert into data_sync_records(targetschema,tablename,lastmodifieddate,createtime)
+        values(#{targetschema},#{tablename},#{lastmodifieddate},#{createtime})
+    </insert>
+
+</mapper>
