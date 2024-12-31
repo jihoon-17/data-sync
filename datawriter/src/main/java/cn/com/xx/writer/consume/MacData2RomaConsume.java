@@ -19,7 +19,7 @@ import java.util.*;
 
 /**
  * 消费kafka数据写入roma平台
- * @author zhixun
+ * @author jihoon
  */
 @Slf4j
 @Component
